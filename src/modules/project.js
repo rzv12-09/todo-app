@@ -23,4 +23,8 @@ export default class Project {
     findTaskById(id) {
         return this.taskList.find((task) => task.id === id);
     }
+
+    getName(){
+        return this.name;
+    }
 }

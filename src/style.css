@@ -1,0 +1,6 @@
+
+.sidebar,
+.myProjects {
+    display: flex;
+    flex-direction: column;
+}
