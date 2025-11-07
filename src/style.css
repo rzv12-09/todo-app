@@ -1,6 +1,14 @@
+body {
+    display: flex;
+}
+
+body > div {
+    flex: 1;
+}
 
 .sidebar,
-.myProjects {
+.myProjects,
+.content {
     display: flex;
     flex-direction: column;
 }

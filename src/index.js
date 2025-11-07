@@ -6,3 +6,4 @@ import SidebarController from "./modules/sidebarController.js";
 window.ProjectController = ProjectController;
 window.SidebarController = SidebarController;
 SidebarController.render();
+SidebarController.bindEvents();

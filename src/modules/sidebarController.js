@@ -1,4 +1,5 @@
 import ProjectController from "./projectController";
+import ModalController from "./modalController";
 
 const SidebarController = (()=>{
     const sidebar = document.querySelector(".sidebar");
@@ -16,26 +17,37 @@ const SidebarController = (()=>{
         const myProjects = document.createElement("div");
         myProjects.classList.add("myProjects");
         const myProjectsHeader = document.createElement("button");
-        myProjectsHeader.textContent = "My projects";
+        myProjectsHeader.textContent = "My projects (Add New)";
+        myProjectsHeader.id = "newProject";
+
         myProjects.appendChild(myProjectsHeader)
 
         const projects = ProjectController.getProjects();
         for(let project of projects){
             const projectButton = document.createElement("button");
             projectButton.textContent = project.getName();
+            projectButton.dataset.id = project.getId();
             myProjects.appendChild(projectButton);
         }
     
-        
         sidebar.appendChild(sidebarHeader);
         sidebar.appendChild(addTaskBtn);
         sidebar.appendChild(inbox);
         sidebar.appendChild(myProjects)
     }
 
+    const bindEvents= () =>{
+        sidebar.addEventListener("click",(e)=>{
+            if(e.target.id === "newProject") {
+                ModalController.handleNewProject();
+            }
+        })
+    }
+
 
     return {
         render,
+        bindEvents,
     }
 })();
 
