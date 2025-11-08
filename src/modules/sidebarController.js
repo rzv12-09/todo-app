@@ -24,6 +24,8 @@ const SidebarController = (()=>{
 
         const projects = ProjectController.getProjects();
         for(let project of projects){
+            if(project.getName() === "Inbox") continue;
+            
             const projectButton = document.createElement("button");
             projectButton.textContent = project.getName();
             projectButton.dataset.id = project.getId();

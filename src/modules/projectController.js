@@ -2,8 +2,7 @@ import Project from "./project.js"
 
 const ProjectController = (()=>{
     const projectList = [];
-
-
+ 
     const addProject = (name) =>{
         const project = new Project(name);
         projectList.push(project);
@@ -23,6 +22,8 @@ const ProjectController = (()=>{
     const findProjectById = (id) => {
         return projectList.find((project) => project.id === id)
     }
+
+    addProject("Inbox");
 
     return {
         addProject,
