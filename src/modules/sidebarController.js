@@ -9,6 +9,7 @@ const SidebarController = (()=>{
         sidebar.textContent = "Placeholder";
 
         const addTaskBtn = document.createElement("button");
+        addTaskBtn.id = "newTask";
         addTaskBtn.textContent = "Add Task";
         
         const inbox = document.createElement("button");
@@ -25,7 +26,7 @@ const SidebarController = (()=>{
         const projects = ProjectController.getProjects();
         for(let project of projects){
             if(project.getName() === "Inbox") continue;
-            
+
             const projectButton = document.createElement("button");
             projectButton.textContent = project.getName();
             projectButton.dataset.id = project.getId();
@@ -42,6 +43,9 @@ const SidebarController = (()=>{
         sidebar.addEventListener("click",(e)=>{
             if(e.target.id === "newProject") {
                 ModalController.handleNewProject();
+            }
+            if(e.target.id === "newTask"){
+                ModalController.handleNewTask();
             }
         })
     }
