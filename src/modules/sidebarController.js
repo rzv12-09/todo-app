@@ -1,5 +1,6 @@
 import ProjectController from "./projectController";
 import ModalController from "./modalController";
+import ContentController from "./contentController";
 
 const SidebarController = (()=>{
     const sidebar = document.querySelector(".sidebar");
@@ -14,6 +15,8 @@ const SidebarController = (()=>{
         
         const inbox = document.createElement("button");
         inbox.textContent = "Inbox";
+        inbox.dataset.id = ProjectController.getProjects()[0].getId();
+        inbox.classList.add("project");
 
         const myProjects = document.createElement("div");
         myProjects.classList.add("myProjects");
@@ -30,6 +33,7 @@ const SidebarController = (()=>{
             const projectButton = document.createElement("button");
             projectButton.textContent = project.getName();
             projectButton.dataset.id = project.getId();
+            projectButton.classList.add("project");
             myProjects.appendChild(projectButton);
         }
     
@@ -47,6 +51,11 @@ const SidebarController = (()=>{
             if(e.target.id === "newTask"){
                 ModalController.handleNewTask();
             }
+            if(e.target.classList.contains("project")){
+                const projectId = e.target.dataset.id;
+                ContentController.renderProjectTasks(ProjectController.findProjectById(projectId));
+            }
+
         })
     }
 

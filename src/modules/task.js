@@ -11,4 +11,16 @@ export default class Task {
     toggle(){
        this.completed = !this.completed;
     }
+
+    getTitle(){
+        return this.title;
+    }
+
+    getDesc(){
+        return this.description;
+    }
+
+    getDueDate(){
+        return this.dueDate;
+    }
 }
