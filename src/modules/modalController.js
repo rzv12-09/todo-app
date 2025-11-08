@@ -1,5 +1,6 @@
 import ProjectController from "./projectController";
 import SidebarController from "./sidebarController";
+import ContentController from "./contentController";
 
 const ModalController = (()=>{
     const dialog = document.createElement("dialog");
@@ -73,7 +74,11 @@ const ModalController = (()=>{
             const name = nameInput.value;
             const desc = descriptionInput.value;
             const dueDate = dueDateInput.value;
-            ProjectController.findProjectById(projectId).addTask(name,desc,dueDate,"none");
+            const projectObj = ProjectController.findProjectById(projectId);
+            projectObj.addTask(name,desc,dueDate,"none");
+
+            if(projectId === ContentController.getActiveProject().getId())
+                ContentController.renderProjectTasks(projectObj);
             dialog.close();
         })
 
