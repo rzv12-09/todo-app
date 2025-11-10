@@ -9,3 +9,4 @@ window.SidebarController = SidebarController;
 SidebarController.render();
 SidebarController.bindEvents();
 ContentController.renderProjectTasks(ProjectController.getProjects()[0]);
+ContentController.bindEvents();

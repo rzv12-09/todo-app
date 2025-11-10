@@ -23,4 +23,29 @@ export default class Task {
     getDueDate(){
         return this.dueDate;
     }
+
+    getId(){
+        return this.id;
+    }
+
+    getPriority(){
+        return this.priority;
+    }
+
+    setTitle(title){
+        this.title = title;
+    }
+
+    setDesc(desc){
+        this.description= desc;
+    }
+
+    setDate(date) {
+        this.dueDate = date;
+    }
+
+    setPriority(priority){
+        this.priority = priority;
+    }
 }
+

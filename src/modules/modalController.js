@@ -108,7 +108,7 @@ const ModalController = (()=>{
             const dueDate = dueDateInput.value;
             const projectObj = ProjectController.findProjectById(projectId);
             const priority = selectPriority.value;
-            projectObj.addTask(name,desc,dueDate,"none");
+            projectObj.addTask(name,desc,dueDate,priority);
 
             if(projectId === ContentController.getActiveProject().getId())
                 ContentController.renderProjectTasks(projectObj);
