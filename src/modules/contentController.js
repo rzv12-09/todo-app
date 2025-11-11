@@ -136,6 +136,9 @@ const ContentController = (()=>{
     }
 
     const handleDeleteTask = (taskId)=>{
+        const confirmed = confirm("Are you sure you want to delete this task?");
+        if (!confirmed) return;      
+
         activeProject.removeTask(taskId);
         renderProjectTasks(activeProject);
     }
