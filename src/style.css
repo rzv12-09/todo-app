@@ -1,6 +1,12 @@
 * {
     box-sizing: border-box;
 }
+button {
+    all: unset; 
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
 
 html, body {
     height: 100%;
@@ -17,6 +23,7 @@ body {
 :root {
     --content-bg-color: #1e1e1e;
     --sidebar-bg-color: #262626;
+    --project-hover-color: #b2920423;
 }
 
 .sidebar {
@@ -26,16 +33,34 @@ body {
     width: 200px;
     height: 100vh; 
     position: sticky;
-    text-align: center;
+    text-align: left;
     top: 0;
     padding: 10px;
-    gap: 15px;
+    gap: 12px;
 }
 
+.myProjects {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
+.sidebar button:hover{
+    background-color: var(--project-hover-color);
+}
 
 .content {
     background-color: var(--content-bg-color);
     flex: 1;
     overflow-y: auto; 
+}
+
+.sidebar div:nth-child(1){
+    margin-bottom: 15px;
+}
+
+.sidebar button {
+    border-radius: 5px;
+    padding: 5px;
 }
