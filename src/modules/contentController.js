@@ -133,8 +133,11 @@ const ContentController = (()=>{
         editDiv.appendChild(cancelBtn);
         editDiv.appendChild(saveBtn);
 
-        //la save
-        //renderProjectTasks(activeProject);
+    }
+
+    const handleDeleteTask = (taskId)=>{
+        activeProject.removeTask(taskId);
+        renderProjectTasks(activeProject);
     }
 
     const bindEvents = () => {
@@ -143,7 +146,10 @@ const ContentController = (()=>{
                 const taskDiv = e.target.closest('[data-id]')
                 const taskId = taskDiv.dataset.id;
                 handleEditTask(taskId);
-                
+            }
+            if (e.target.classList.contains("task-delete-btn")){
+                const taskId = e.target.closest('[data-id]').dataset.id;
+                handleDeleteTask(taskId);
             }
         })
     }
