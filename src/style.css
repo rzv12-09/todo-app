@@ -1,14 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
     display: flex;
+    font-family: sans-serif;
+    color: white;
+    width: 100%;
+    font-size: 18px;
 }
 
-body > div {
-    flex: 1;
+:root {
+    --content-bg-color: #1e1e1e;
+    --sidebar-bg-color: #262626;
 }
 
-.sidebar,
-.myProjects,
-.content {
+.sidebar {
     display: flex;
     flex-direction: column;
+    background-color: var(--sidebar-bg-color);
+    width: 200px;
+    height: 100vh; 
+    position: sticky;
+    text-align: center;
+    top: 0;
+    padding: 10px;
+    gap: 15px;
+}
+
+
+
+.content {
+    background-color: var(--content-bg-color);
+    flex: 1;
+    overflow-y: auto; 
 }
