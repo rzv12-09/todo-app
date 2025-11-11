@@ -91,3 +91,17 @@ body {
     margin-right: 6px;
     margin-left: 8px;
 }
+
+.active {
+    background-color:#de4c4a38;
+    color: var(--new-task-btn-font-color);
+    font-weight: bold;
+}
+
+
+.active:hover {
+
+    background-color:#de4c4a38 !important;
+    color: var(--new-task-btn-font-color);
+    font-weight: bold;
+}

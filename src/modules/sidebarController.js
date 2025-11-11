@@ -4,11 +4,14 @@ import ContentController from "./contentController";
 
 const SidebarController = (() => {
     const sidebar = document.querySelector(".sidebar");
+    let selectedProject = null;
 
     const render = () => {
-        const sidebarHeader = document.createElement("div");
+      
         sidebar.textContent = "";
+        const previousSelectedId = selectedProject ? selectedProject.dataset.id : null;
 
+        const sidebarHeader = document.createElement("div");
         sidebarHeader.textContent = "To Do App";
 
         const addTaskBtn = document.createElement("button");
@@ -19,11 +22,15 @@ const SidebarController = (() => {
         inbox.textContent = "Inbox";
         inbox.dataset.id = ProjectController.getProjects()[0].getId();
         inbox.classList.add("project");
+        if(!selectedProject)
+            inbox.classList.add("active");
+
 
         const myProjects = document.createElement("div");
         myProjects.classList.add("myProjects");
+
         const myProjectsHeader = document.createElement("button");
-        myProjectsHeader.textContent = "My projects (Add New)";
+        myProjectsHeader.textContent = "My projects";
         myProjectsHeader.id = "newProject";
 
         myProjects.appendChild(myProjectsHeader)
@@ -36,6 +43,11 @@ const SidebarController = (() => {
             projectButton.textContent = project.getName();
             projectButton.dataset.id = project.getId();
             projectButton.classList.add("project");
+    
+            if (previousSelectedId === project.getId()) {
+                projectButton.classList.add("active");
+                selectedProject = projectButton;
+            }
             myProjects.appendChild(projectButton);
         }
 
@@ -43,17 +55,30 @@ const SidebarController = (() => {
         sidebar.appendChild(addTaskBtn);
         sidebar.appendChild(inbox);
         sidebar.appendChild(myProjects)
+
+        if(!selectedProject){
+            inbox.classList.add("active");
+            selectedProject = inbox;
+        }
+
     }
 
+    
     const bindEvents = () => {
         sidebar.addEventListener("click", (e) => {
             if (e.target.id === "newProject") {
                 ModalController.handleNewProject();
+                
             }
             if (e.target.id === "newTask") {
                 ModalController.handleNewTask();
+                
             }
             if (e.target.classList.contains("project")) {
+                if(selectedProject)
+                    selectedProject.classList.remove("active");
+                selectedProject = e.target;
+                selectedProject.classList.add("active");
                 const projectId = e.target.dataset.id;
                 ContentController.renderProjectTasks(ProjectController.findProjectById(projectId));
             }
