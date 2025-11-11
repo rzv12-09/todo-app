@@ -74,6 +74,34 @@ body {
     font-size: 0.75rem;
 }
 
+#newProject::after {
+    content: "+";
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.2s ease, color 0.2s ease;
+    color: #888;
+    scale: 1.2;
+}
+
+#newProject:hover::after {
+    transform: rotate(90deg) scale(1.3);
+    color: var(--new-task-btn-font-color)
+}
+
+#newTask::before {
+    content: "+";
+    color: var(--new-task-btn-font-color);
+    margin-right: 6px;
+    scale: 1.2;
+    display: inline-block; /* necesar pentru transform */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#newTask:hover::before {
+    transform: rotate(90deg) scale(1.3); /* efect de rotație și mărire */
+    color: var(--new-task-btn-font-color)
+}
+
 #newTask {
     color: var(--new-task-btn-font-color);
     font-weight: bold;
@@ -84,6 +112,8 @@ body {
     color: var(--new-task-btn-font-color);
     margin-right: 6px;
 }
+
+
 
 .myProjects .project::before{
     content: "#";
