@@ -4,7 +4,7 @@
 button {
     all: unset; 
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
   
 
@@ -24,23 +24,24 @@ body {
     --content-bg-color: #1e1e1e;
     --sidebar-bg-color: #262626;
     --project-hover-color: #b2920423;
+    --new-task-btn-font-color: #de4c4a;
 }
 
 .sidebar {
     display: flex;
     flex-direction: column;
     background-color: var(--sidebar-bg-color);
-    width: 200px;
+    width: 180px;
     height: 100vh; 
     position: sticky;
     text-align: left;
     top: 0;
     padding: 10px;
-    gap: 12px;
+    gap: 8px;
 }
 
 .myProjects {
-    margin-top: 15px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -58,9 +59,35 @@ body {
 
 .sidebar div:nth-child(1){
     margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
 }
 
 .sidebar button {
     border-radius: 5px;
     padding: 5px;
+}
+
+#newProject {
+    font-weight: bold;
+    color: lightgray;
+    font-size: 0.75rem;
+}
+
+#newTask {
+    color: var(--new-task-btn-font-color);
+    font-weight: bold;
+}
+
+#newTask::before {
+    content: "+";
+    color: var(--new-task-btn-font-color);
+    margin-right: 6px;
+}
+
+.myProjects .project::before{
+    content: "#";
+    color: gray;
+    margin-right: 6px;
+    margin-left: 8px;
 }
