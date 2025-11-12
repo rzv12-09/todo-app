@@ -160,3 +160,30 @@ body {
     transform: scale(1.1);
     color: #ff0000;
   }
+
+.content {
+    padding:5% 7%;
+}
+
+.content {
+    font-size:0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap:15px
+}
+
+.content > div:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.task-item {
+    border-bottom: 1px solid rgb(68, 68, 68);
+    padding: 8px;
+}

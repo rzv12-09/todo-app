@@ -14,6 +14,7 @@ const ContentController = (()=>{
         titleDiv.textContent = project.getName();
 
         const tasksDiv = document.createElement("div");
+        tasksDiv.classList.add("tasks-container")
         if(taskList.length === 0)
             tasksDiv.textContent = "This project has no tasks";
         else {
@@ -43,6 +44,7 @@ const ContentController = (()=>{
                 task.appendChild(deleteBtn);
 
                 task.dataset.id = taskObj.getId()
+                task.classList.add("task-item")
                 tasksDiv.appendChild(task);
             }
             
