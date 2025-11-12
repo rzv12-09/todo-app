@@ -39,16 +39,37 @@ const SidebarController = (() => {
         for (let project of projects) {
             if (project.getName() === "Inbox") continue;
 
+            const projectItem = document.createElement("div");
+            projectItem.classList.add("project-item");
+
             const projectButton = document.createElement("button");
             projectButton.textContent = project.getName();
             projectButton.dataset.id = project.getId();
             projectButton.classList.add("project");
-    
+            
             if (previousSelectedId === project.getId()) {
                 projectButton.classList.add("active");
                 selectedProject = projectButton;
             }
-            myProjects.appendChild(projectButton);
+
+            projectItem.appendChild(projectButton)
+            const delBtn = document.createElement("button");
+            delBtn.textContent="🗑"
+            delBtn.classList.add("project-delete-btn")
+
+            delBtn.addEventListener("click",()=>{
+                
+                const confirmed = confirm("Are you sure you want to delete this project?");
+                if (!confirmed) return;
+            
+                ProjectController.deleteProject(project.getId());
+                render();
+                ContentController.renderProjectTasks(ProjectController.getProjects()[0]);
+            })
+
+            projectItem.appendChild(delBtn);
+
+            myProjects.appendChild(projectItem);
         }
 
         sidebar.appendChild(sidebarHeader);

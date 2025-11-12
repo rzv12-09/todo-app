@@ -93,12 +93,12 @@ body {
     color: var(--new-task-btn-font-color);
     margin-right: 6px;
     scale: 1.2;
-    display: inline-block; /* necesar pentru transform */
+    display: inline-block; 
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 #newTask:hover::before {
-    transform: rotate(90deg) scale(1.3); /* efect de rotație și mărire */
+    transform: rotate(90deg) scale(1.3); 
     color: var(--new-task-btn-font-color)
 }
 
@@ -135,3 +135,28 @@ body {
     color: var(--new-task-btn-font-color);
     font-weight: bold;
 }
+
+.project-item {
+    display: flex;
+    width: 100%;
+    gap: 30%;
+}
+
+.project-item .project {
+    flex: 1;
+}
+
+.project-delete-btn {
+    background: transparent;
+    border: none;
+    color: #ff5555;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .project-delete-btn:hover {
+    background-color: #88888831 !important;
+    transform: scale(1.1);
+    color: #ff0000;
+  }
