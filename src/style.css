@@ -187,3 +187,103 @@ body {
     border-bottom: 1px solid rgb(68, 68, 68);
     padding: 8px;
 }
+
+dialog {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    background: transparent;
+  }
+  
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+  }
+  
+
+  .new-project,
+  .new-task {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background-color: #2a2a2a;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 360px;
+    max-width: 90vw;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .new-project div:first-child {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .new-project input,
+  .new-task input,
+  .new-task select {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #3a3a3a;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  
+  .new-task label {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-bottom: 0.2rem;
+  }
+  
+  .new-project button,
+  .new-task button {
+    background-color:var(--new-task-btn-font-color);
+    border: none;
+    border-radius: 6px;
+    padding: 0.45rem 0.8rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    align-self: flex-end;
+  }
+  
+  .new-task button:hover,
+  .new-project button:hover {
+    background-color:#e75957;
+    transform: scale(1.03);
+  }
+  
+  .new-task button:active,
+  .new-project button:active {
+    transform: scale(0.97);
+  }
+  
+  .new-task button:nth-last-child(2) {
+    background-color: #555;
+  }
+  
+  .new-task button:nth-last-child(2):hover {
+    background-color: #666;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

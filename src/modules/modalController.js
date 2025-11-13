@@ -8,15 +8,23 @@ const ModalController = (()=>{
   
     const handleNewProject = ()=>{
         dialog.innerHTML = ``;
+
+        const dialogDiv = document.createElement("div");
+        dialogDiv.className = "new-project";
+
         const title = document.createElement("div");
         title.textContent = "Project Name";
         const input = document.createElement("input");
         const okBtn = document.createElement("button");
         okBtn.textContent = "OK";
 
-        dialog.appendChild(title);
-        dialog.appendChild(input);
-        dialog.appendChild(okBtn);
+
+        dialogDiv.appendChild(title);
+        dialogDiv.appendChild(input);
+        dialogDiv.appendChild(okBtn);
+
+        dialog.appendChild(dialogDiv);
+        
         dialog.showModal();
 
         okBtn.addEventListener("click", ()=>{
@@ -27,7 +35,13 @@ const ModalController = (()=>{
     }
 
     const handleNewTask = () =>{
+    
+
         dialog.innerHTML = ``;
+
+        const dialogDiv = document.createElement("div");
+        dialogDiv.className = "new-task";
+
         const nameInput = document.createElement("input");
         nameInput.placeholder = "Task name";
 
@@ -65,6 +79,7 @@ const ModalController = (()=>{
         cancelBtn.textContent = "Cancel";
         cancelBtn.addEventListener("click",()=>{
             dialog.close();
+        
         })
 
         const priorityComboBox = document.createElement("div");
@@ -75,27 +90,24 @@ const ModalController = (()=>{
         selectPriority.name = "priority";
         selectPriority.id = "priority-select";
         const option1 = document.createElement("option");
-        option1.textContent = "Priority 1"
-        option1.value = "1";
+        option1.textContent = "Priority High"
+        option1.value = "high";
 
         const option2 = document.createElement("option");
-        option2.textContent = "Priority 2"
-        option2.value = "2";
+        option2.textContent = "Priority Medium"
+        option2.value = "medium";
 
         const option3 = document.createElement("option");
-        option3.textContent = "Priority 3"
-        option3.value = "3";
+        option3.textContent = "Prioriy Low"
+        option3.value = "low";
+        option3.selected = true;
 
-        const option4 = document.createElement("option");
-        option4.textContent = "Priority 4"
-        option4.value = "4";
-        option4.selected = true;
 
 
         selectPriority.appendChild(option1);
         selectPriority.appendChild(option2);
         selectPriority.appendChild(option3);
-        selectPriority.appendChild(option4);
+ 
 
         priorityComboBox.appendChild(selectPriority);
 
@@ -116,13 +128,16 @@ const ModalController = (()=>{
         })
 
 
-        dialog.appendChild(nameInput);
-        dialog.appendChild(descriptionInput);
-        dialog.appendChild(dueDateInput);
-        dialog.appendChild(projectComboBox);
-        dialog.appendChild(priorityComboBox);
-        dialog.appendChild(cancelBtn);
-        dialog.appendChild(addBtn);
+        dialogDiv.appendChild(nameInput);
+        dialogDiv.appendChild(descriptionInput);
+        dialogDiv.appendChild(dueDateInput);
+        dialogDiv.appendChild(projectComboBox);
+        dialogDiv.appendChild(priorityComboBox);
+        dialogDiv.appendChild(cancelBtn);
+        dialogDiv.appendChild(addBtn);
+
+        dialog.appendChild(dialogDiv);
+
         dialog.showModal();
     }
 
