@@ -18,9 +18,16 @@ const ModalController = (()=>{
         const okBtn = document.createElement("button");
         okBtn.textContent = "OK";
 
+        const cancelBtn = document.createElement("button");
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click",()=>{
+            dialog.close();
+        
+        })
 
         dialogDiv.appendChild(title);
         dialogDiv.appendChild(input);
+        dialogDiv.appendChild(cancelBtn);
         dialogDiv.appendChild(okBtn);
 
         dialog.appendChild(dialogDiv);

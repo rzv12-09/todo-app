@@ -267,15 +267,17 @@ dialog {
     transform: scale(0.97);
   }
   
-  .new-task button:nth-last-child(2) {
+  .new-task button:nth-last-child(2),
+  .new-project button:nth-last-child(2) {
     background-color: #555;
   }
   
-  .new-task button:nth-last-child(2):hover {
+  .new-task button:nth-last-child(2):hover,
+  .new-project button:nth-last-child(2):hover{
     background-color: #666;
   }
   
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
