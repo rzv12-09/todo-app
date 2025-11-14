@@ -311,7 +311,7 @@ dialog {
 
 .task-item:hover {
   background-color: #323232;
-  transform: translateY(-1px);
+
 }
 
 
@@ -337,6 +337,7 @@ dialog {
 }
 
 
+
 .task-item button {
   padding: 4px 10px;
   border-radius: 6px;
@@ -347,6 +348,7 @@ dialog {
 
 .task-edit-btn {
   background-color: #3f66ff20;
+  text-align: center;
   color: #7398ff;
   grid-row: 1 / 2;
   grid-column: 2 / 3;
@@ -360,6 +362,7 @@ dialog {
 
 .task-delete-btn {
   background-color: #ff3b3b20;
+  text-align: center;
   color: #ff6a6a;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
@@ -413,3 +416,72 @@ dialog {
   background: #eee;
 }
 
+.task-item.editing {
+  background-color: #383838;
+  border: 1px solid #555;
+  transform: scale(1.01);
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.task-item.editing input,
+.task-item.editing select {
+  background-color: #444;
+  border-radius: 6px;
+  border: none;
+  padding: 6px 8px;
+  color: #fff;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.task-item.editing button {
+  margin-top: 6px;
+}
+
+.task-item.editing {
+  animation: editFade 0.15s ease-out;
+}
+
+@keyframes editFade {
+  from { transform: scale(0.97); opacity: 0.7; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.task-item.editing .edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.task-item.editing .save-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.task-item.editing .save-btn:hover {
+  background-color: #66bb6a;
+  transform: scale(1.03);
+}
+
+.task-item.editing .cancel-btn {
+  background-color: #555;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.task-item.editing .cancel-btn:hover {
+  background-color: #777;
+  transform: scale(1.03);
+}

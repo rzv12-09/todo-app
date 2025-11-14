@@ -75,6 +75,7 @@ const ContentController = (()=>{
         const selectedTask = activeProject.findTaskById(taskId);
         console.log(taskId);
         const editDiv = document.querySelector(`div[data-id="${taskId}"]`);
+        editDiv.classList.add("editing");
         editDiv.textContent = '';
         
         const titleInput = document.createElement("input");
@@ -121,6 +122,7 @@ const ContentController = (()=>{
         const cancelBtn = document.createElement("button");
         cancelBtn.textContent = "Cancel";
         cancelBtn.addEventListener("click",()=>{
+            editDiv.classList.remove("editing");
             renderProjectTasks(activeProject);
             return;
         })
@@ -132,18 +134,26 @@ const ContentController = (()=>{
             selectedTask.setDesc(descriptionInput.value);
             selectedTask.setDate(dueDateInput.value);
             selectedTask.setPriority(selectPriority.value);
+            editDiv.classList.remove("editing");
             renderProjectTasks(activeProject);
             return;
         })
 
-       
+        cancelBtn.classList.add("cancel-btn");
+        saveBtn.classList.add("save-btn");
+        const actionsDiv = document.createElement("div");
+        actionsDiv.classList.add("edit-actions");
+        actionsDiv.appendChild(cancelBtn);
+        actionsDiv.appendChild(saveBtn);
+
+     
+
 
         editDiv.appendChild(titleInput);
         editDiv.appendChild(descriptionInput);
         editDiv.appendChild(dueDateInput);
         editDiv.appendChild(priorityComboBox);
-        editDiv.appendChild(cancelBtn);
-        editDiv.appendChild(saveBtn);
+        editDiv.appendChild(actionsDiv);
 
     }
 
