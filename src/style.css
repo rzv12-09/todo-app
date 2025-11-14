@@ -289,7 +289,7 @@ dialog {
     }
   }
   
-
+  /* TASKS CONTAINER */
 .tasks-container {
   display: flex;
   flex-direction: column;
@@ -376,3 +376,16 @@ dialog {
   font-size: 0.9rem;
   color: #999;
 }
+
+.content .task-item .low {
+  color: #7ae68a;;
+}
+
+.content .task-item .medium {
+  color: #ffee6a;;
+}
+
+.content .task-item .high {
+  color: #ff8a80;;
+}
+

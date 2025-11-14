@@ -116,7 +116,6 @@ const ModalController = (()=>{
         option3.selected = true;
 
 
-
         selectPriority.appendChild(option1);
         selectPriority.appendChild(option2);
         selectPriority.appendChild(option3);

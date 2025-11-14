@@ -21,6 +21,8 @@ const ContentController = (()=>{
             for(let taskObj of taskList){
                 const task = document.createElement("div");
                 const title = document.createElement("div");
+                title.className = taskObj.getPriority();
+
                 const desc = document.createElement("div");
                 const dueDate = document.createElement("div");
 
@@ -35,7 +37,6 @@ const ContentController = (()=>{
                 const deleteBtn = document.createElement("button");
                 deleteBtn.classList.add("task-delete-btn");
                 deleteBtn.textContent = "Delete";
-
 
                 task.appendChild(title);
                 task.appendChild(desc);
@@ -86,27 +87,22 @@ const ContentController = (()=>{
         selectPriority.name = "priority";
         selectPriority.id = "priority-select";
         const option1 = document.createElement("option");
-        option1.textContent = "Priority 1"
-        option1.value = "1";
+        option1.textContent = "Priority Low"
+        option1.value = "low";
 
         const option2 = document.createElement("option");
-        option2.textContent = "Priority 2"
-        option2.value = "2";
+        option2.textContent = "Priority Medium"
+        option2.value = "medium";
 
         const option3 = document.createElement("option");
-        option3.textContent = "Priority 3"
-        option3.value = "3";
+        option3.textContent = "Priority High"
+        option3.value = "high";
 
-        const option4 = document.createElement("option");
-        option4.textContent = "Priority 4"
-        option4.value = "4";
-        
         selectPriority.value = selectedTask.getPriority()
 
         selectPriority.appendChild(option1);
         selectPriority.appendChild(option2);
         selectPriority.appendChild(option3);
-        selectPriority.appendChild(option4);
 
         priorityComboBox.appendChild(selectPriority);
 
