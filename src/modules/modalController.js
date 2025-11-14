@@ -56,6 +56,7 @@ const ModalController = (()=>{
 
         const nameInput = document.createElement("input");
         nameInput.placeholder = "Task name";
+        nameInput.required = true;
 
         const descriptionInput = document.createElement("input");
         descriptionInput.placeholder = "Description";
@@ -126,6 +127,10 @@ const ModalController = (()=>{
         const addBtn = document.createElement("button");
         addBtn.textContent = "Add task";
         addBtn.addEventListener("click",()=>{
+            if (!nameInput.checkValidity()) {
+                nameInput.reportValidity();
+                return;
+            }
             const projectId = select.value;
             const name = nameInput.value;
             const desc = descriptionInput.value;
