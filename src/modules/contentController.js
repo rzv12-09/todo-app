@@ -38,11 +38,23 @@ const ContentController = (()=>{
                 deleteBtn.classList.add("task-delete-btn");
                 deleteBtn.textContent = "Delete";
 
+                const toggleBtn =document.createElement("button");
+                toggleBtn.textContent = "✔";
+                toggleBtn.classList.add("task-toggle-btn");
+                toggleBtn.addEventListener("click",()=>{
+                    task.classList.toggle("completed");
+                    taskObj.toggle();
+                })
+
+                if(taskObj.getCompleted())
+                    task.classList.add("completed")
+
                 task.appendChild(title);
                 task.appendChild(desc);
                 task.appendChild(dueDate);
                 task.appendChild(editBtn);
                 task.appendChild(deleteBtn);
+                task.appendChild(toggleBtn);
 
                 task.dataset.id = taskObj.getId()
                 task.classList.add("task-item")
@@ -123,6 +135,8 @@ const ContentController = (()=>{
             renderProjectTasks(activeProject);
             return;
         })
+
+       
 
         editDiv.appendChild(titleInput);
         editDiv.appendChild(descriptionInput);

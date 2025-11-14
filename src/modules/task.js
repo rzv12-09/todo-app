@@ -12,6 +12,10 @@ export default class Task {
        this.completed = !this.completed;
     }
 
+    getCompleted(){
+        return this.completed;
+    }
+
     getTitle(){
         return this.title;
     }
