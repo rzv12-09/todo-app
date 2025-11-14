@@ -13,10 +13,11 @@ const ModalController = (()=>{
         dialogDiv.className = "new-project";
 
         const title = document.createElement("div");
-        title.textContent = "Project Name";
+        title.textContent = "New Project Name";
         const input = document.createElement("input");
+        input.setAttribute("required", "");
         const okBtn = document.createElement("button");
-        okBtn.textContent = "OK";
+        okBtn.textContent = "Save";
 
         const cancelBtn = document.createElement("button");
         cancelBtn.textContent = "Cancel";
@@ -35,6 +36,10 @@ const ModalController = (()=>{
         dialog.showModal();
 
         okBtn.addEventListener("click", ()=>{
+            if (!input.checkValidity()) {
+                input.reportValidity(); // arată mesajul default de browser
+                return;
+            }
             ProjectController.addProject(input.value);
             dialog.close();
             SidebarController.render();
