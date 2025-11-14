@@ -1,12 +1,13 @@
+import ModalController from "./modalController";
 
 
-const ContentController = (()=>{
+const ContentController = (() => {
     const content = document.querySelector(".content");
     let activeProject = null;
 
-    const renderProjectTasks = (project) =>{
+    const renderProjectTasks = (project) => {
         activeProject = project;
-        content.innerHTML = '';    
+        content.innerHTML = '';
 
         const taskList = project.getTaskList();
 
@@ -15,10 +16,10 @@ const ContentController = (()=>{
 
         const tasksDiv = document.createElement("div");
         tasksDiv.classList.add("tasks-container")
-        if(taskList.length === 0)
+        if (taskList.length === 0)
             tasksDiv.textContent = "This project has no tasks";
         else {
-            for(let taskObj of taskList){
+            for (let taskObj of taskList) {
                 const task = document.createElement("div");
                 const title = document.createElement("div");
                 title.className = taskObj.getPriority();
@@ -38,15 +39,15 @@ const ContentController = (()=>{
                 deleteBtn.classList.add("task-delete-btn");
                 deleteBtn.textContent = "Delete";
 
-                const toggleBtn =document.createElement("button");
+                const toggleBtn = document.createElement("button");
                 toggleBtn.textContent = "✔";
                 toggleBtn.classList.add("task-toggle-btn");
-                toggleBtn.addEventListener("click",()=>{
+                toggleBtn.addEventListener("click", () => {
                     task.classList.toggle("completed");
                     taskObj.toggle();
                 })
 
-                if(taskObj.getCompleted())
+                if (taskObj.getCompleted())
                     task.classList.add("completed")
 
                 task.appendChild(title);
@@ -60,24 +61,31 @@ const ContentController = (()=>{
                 task.classList.add("task-item")
                 tasksDiv.appendChild(task);
             }
-            
+
         }
 
+        const addBtn = document.createElement("button");
+        addBtn.textContent = "Add Task";
+        addBtn.id = "add-task-content-div";
+        addBtn.addEventListener("click",()=>{
+            ModalController.handleNewTask();
+        })
         content.appendChild(titleDiv);
         content.appendChild(tasksDiv);
+        content.appendChild(addBtn);
     }
 
-    const getActiveProject = ()=>{
+    const getActiveProject = () => {
         return activeProject;
     }
 
-    const handleEditTask = (taskId) =>{
+    const handleEditTask = (taskId) => {
         const selectedTask = activeProject.findTaskById(taskId);
         console.log(taskId);
         const editDiv = document.querySelector(`div[data-id="${taskId}"]`);
         editDiv.classList.add("editing");
         editDiv.textContent = '';
-        
+
         const titleInput = document.createElement("input");
         titleInput.placeholder = "Task name";
         titleInput.value = selectedTask.getTitle();
@@ -121,7 +129,7 @@ const ContentController = (()=>{
 
         const cancelBtn = document.createElement("button");
         cancelBtn.textContent = "Cancel";
-        cancelBtn.addEventListener("click",()=>{
+        cancelBtn.addEventListener("click", () => {
             editDiv.classList.remove("editing");
             renderProjectTasks(activeProject);
             return;
@@ -129,7 +137,7 @@ const ContentController = (()=>{
 
         const saveBtn = document.createElement("button");
         saveBtn.textContent = "Save";
-        saveBtn.addEventListener("click",()=>{
+        saveBtn.addEventListener("click", () => {
             selectedTask.setTitle(titleInput.value);
             selectedTask.setDesc(descriptionInput.value);
             selectedTask.setDate(dueDateInput.value);
@@ -146,7 +154,7 @@ const ContentController = (()=>{
         actionsDiv.appendChild(cancelBtn);
         actionsDiv.appendChild(saveBtn);
 
-     
+
 
 
         editDiv.appendChild(titleInput);
@@ -157,22 +165,22 @@ const ContentController = (()=>{
 
     }
 
-    const handleDeleteTask = (taskId)=>{
+    const handleDeleteTask = (taskId) => {
         const confirmed = confirm("Are you sure you want to delete this task?");
-        if (!confirmed) return;      
+        if (!confirmed) return;
 
         activeProject.removeTask(taskId);
         renderProjectTasks(activeProject);
     }
 
     const bindEvents = () => {
-        content.addEventListener("click",(e)=>{
-            if(e.target.classList.contains("task-edit-btn")){   
+        content.addEventListener("click", (e) => {
+            if (e.target.classList.contains("task-edit-btn")) {
                 const taskDiv = e.target.closest('[data-id]')
                 const taskId = taskDiv.dataset.id;
                 handleEditTask(taskId);
             }
-            if (e.target.classList.contains("task-delete-btn")){
+            if (e.target.classList.contains("task-delete-btn")) {
                 const taskId = e.target.closest('[data-id]').dataset.id;
                 handleDeleteTask(taskId);
             }
