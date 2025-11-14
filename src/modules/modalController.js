@@ -26,10 +26,15 @@ const ModalController = (()=>{
         
         })
 
+        const actionsDiv = document.createElement("div");
+        actionsDiv.classList.add("actionsDiv");
+        actionsDiv.appendChild(cancelBtn);
+        actionsDiv.appendChild(okBtn);
+
         dialogDiv.appendChild(title);
         dialogDiv.appendChild(input);
-        dialogDiv.appendChild(cancelBtn);
-        dialogDiv.appendChild(okBtn);
+    
+        dialogDiv.appendChild(actionsDiv)
 
         dialog.appendChild(dialogDiv);
         
@@ -143,14 +148,17 @@ const ModalController = (()=>{
             dialog.close();
         })
 
+        const actionsDiv = document.createElement("div");
+        actionsDiv.classList.add("actionsDiv");
+        actionsDiv.appendChild(cancelBtn);
+        actionsDiv.appendChild(addBtn);
 
         dialogDiv.appendChild(nameInput);
         dialogDiv.appendChild(descriptionInput);
         dialogDiv.appendChild(dueDateInput);
         dialogDiv.appendChild(projectComboBox);
         dialogDiv.appendChild(priorityComboBox);
-        dialogDiv.appendChild(cancelBtn);
-        dialogDiv.appendChild(addBtn);
+        dialogDiv.appendChild(actionsDiv);
 
         dialog.appendChild(dialogDiv);
 

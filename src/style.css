@@ -485,3 +485,8 @@ dialog {
   background-color: #777;
   transform: scale(1.03);
 }
+
+.actionsDiv {
+  display: flex;
+  gap: 10px;
+}
