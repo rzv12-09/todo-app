@@ -1,4 +1,5 @@
 import ModalController from "./modalController";
+import StorageController from "./storageController";
 
 
 const ContentController = (() => {
@@ -45,6 +46,7 @@ const ContentController = (() => {
                 toggleBtn.addEventListener("click", () => {
                     task.classList.toggle("completed");
                     taskObj.toggle();
+                    StorageController.storeProjects();
                 })
 
                 if (taskObj.getCompleted())
@@ -144,6 +146,7 @@ const ContentController = (() => {
             selectedTask.setPriority(selectPriority.value);
             editDiv.classList.remove("editing");
             renderProjectTasks(activeProject);
+            StorageController.storeProjects();
             return;
         })
 
@@ -171,6 +174,7 @@ const ContentController = (() => {
 
         activeProject.removeTask(taskId);
         renderProjectTasks(activeProject);
+        StorageController.storeProjects();
     }
 
     const bindEvents = () => {

@@ -1,6 +1,7 @@
 import ProjectController from "./projectController";
 import SidebarController from "./sidebarController";
 import ContentController from "./contentController";
+import StorageController from "./storageController";
 
 const ModalController = (()=>{
     const dialog = document.createElement("dialog");
@@ -42,11 +43,12 @@ const ModalController = (()=>{
 
         okBtn.addEventListener("click", ()=>{
             if (!input.checkValidity()) {
-                input.reportValidity(); // arată mesajul default de browser
+                input.reportValidity();
                 return;
             }
             ProjectController.addProject(input.value);
             dialog.close();
+            StorageController.storeProjects();
             SidebarController.render();
         })
     }
@@ -146,6 +148,7 @@ const ModalController = (()=>{
             if(projectId === ContentController.getActiveProject().getId())
                 ContentController.renderProjectTasks(projectObj);
             dialog.close();
+            StorageController.storeProjects();
         })
 
         const actionsDiv = document.createElement("div");

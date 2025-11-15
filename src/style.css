@@ -493,12 +493,12 @@ dialog {
 #add-task-content-div {
   margin-top: 20px;
   background: transparent;
-  color: #cccccc; /* gri deschis */
+  color: #cccccc; 
   font-weight: 600;
   font-size: 0.65rem;
   padding: 7px 9px;
   border-radius: 8px;
-  border: 1px solid #444; /* o margine discretă */
+  border: 1px solid #444; 
   width: fit-content;
   align-self: flex-start;
   margin-top: -5px;
@@ -506,8 +506,8 @@ dialog {
 }
 
 #add-task-content-div:hover {
-  background-color: #de4c4a; /* devine roșu la hover */
-  color: white; /* text alb */
+  background-color: #de4c4a; 
+  color: white; 
   transform: scale(1.03);
 }
 

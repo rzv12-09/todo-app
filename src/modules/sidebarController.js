@@ -1,6 +1,7 @@
 import ProjectController from "./projectController";
 import ModalController from "./modalController";
 import ContentController from "./contentController";
+import StorageController from "./storageController";
 
 const SidebarController = (() => {
     const sidebar = document.querySelector(".sidebar");
@@ -56,15 +57,17 @@ const SidebarController = (() => {
             const delBtn = document.createElement("button");
             delBtn.textContent="🗑"
             delBtn.classList.add("project-delete-btn")
+            delBtn.dataset.id = project.getId();
 
             delBtn.addEventListener("click",()=>{
                 
                 const confirmed = confirm("Are you sure you want to delete this project?");
                 if (!confirmed) return;
             
-                ProjectController.deleteProject(project.getId());
+                ProjectController.deleteProject(delBtn.dataset.id);
                 render();
                 ContentController.renderProjectTasks(ProjectController.getProjects()[0]);
+                StorageController.storeProjects();
             })
 
             projectItem.appendChild(delBtn);
@@ -89,7 +92,6 @@ const SidebarController = (() => {
         sidebar.addEventListener("click", (e) => {
             if (e.target.id === "newProject") {
                 ModalController.handleNewProject();
-                
             }
             if (e.target.id === "newTask") {
                 ModalController.handleNewTask();
