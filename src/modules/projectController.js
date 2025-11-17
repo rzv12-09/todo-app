@@ -1,34 +1,34 @@
-import Project from "./project.js"
+import Project from "./project.js";
 
-const ProjectController = (()=>{
-    const projectList = [];
- 
-    const addProject = (name) =>{
-        const project = new Project(name);
-        projectList.push(project);
-    }
+const ProjectController = (() => {
+  const projectList = [];
 
-    const deleteProject = (id) =>{
-        const projectIndex = projectList.findIndex(project => project.id == id)
-        projectList.splice(projectIndex,1);
-    }
+  const addProject = (name) => {
+    const project = new Project(name);
+    projectList.push(project);
+  };
 
-    const getProjects = ()=>{
-        return projectList;
-    }
+  const deleteProject = (id) => {
+    const projectIndex = projectList.findIndex((project) => project.id == id);
+    projectList.splice(projectIndex, 1);
+  };
 
-    const findProjectById = (id) => {
-        return projectList.find((project) => project.id === id)
-    }
+  const getProjects = () => {
+    return projectList;
+  };
 
-    addProject("Inbox");
+  const findProjectById = (id) => {
+    return projectList.find((project) => project.id === id);
+  };
 
-    return {
-        addProject,
-        deleteProject,
-        getProjects,
-        findProjectById
-    };
+  addProject("Inbox");
+
+  return {
+    addProject,
+    deleteProject,
+    getProjects,
+    findProjectById,
+  };
 })();
 
 export default ProjectController;

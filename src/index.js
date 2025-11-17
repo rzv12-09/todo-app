@@ -1,4 +1,4 @@
-import "./reset.css"
+import "./reset.css";
 import "./style.css";
 import ProjectController from "./modules/projectController.js";
 import SidebarController from "./modules/sidebarController.js";

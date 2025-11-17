@@ -1,34 +1,34 @@
-import Task from "./task.js"
+import Task from "./task.js";
 
 export default class Project {
-    constructor(name){
-        this.id = crypto.randomUUID();
-        this.name = name;
-        this.taskList = [];
-    }
+  constructor(name) {
+    this.id = crypto.randomUUID();
+    this.name = name;
+    this.taskList = [];
+  }
 
-    addTask(title,description,dueDate,priority){
-        const task = new Task(title,description,dueDate,priority);
-        this.taskList.push(task);
-    }
+  addTask(title, description, dueDate, priority) {
+    const task = new Task(title, description, dueDate, priority);
+    this.taskList.push(task);
+  }
 
-    removeTask(id) {
-        this.taskList = this.taskList.filter((task)=>task.id != id);
-    }
+  removeTask(id) {
+    this.taskList = this.taskList.filter((task) => task.id != id);
+  }
 
-    getTaskList(){
-        return this.taskList;
-    }
+  getTaskList() {
+    return this.taskList;
+  }
 
-    findTaskById(id) {
-        return this.taskList.find((task) => task.id === id);
-    }
+  findTaskById(id) {
+    return this.taskList.find((task) => task.id === id);
+  }
 
-    getName(){
-        return this.name;
-    }
+  getName() {
+    return this.name;
+  }
 
-    getId(){
-        return this.id;
-    }
+  getId() {
+    return this.id;
+  }
 }
