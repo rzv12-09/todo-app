@@ -9,9 +9,7 @@ const ProjectController = (()=>{
     }
 
     const deleteProject = (id) =>{
-        const projectIndex = projectList.findIndex((project)=>{
-            project.id === id;
-        })
+        const projectIndex = projectList.findIndex(project => project.id == id)
         projectList.splice(projectIndex,1);
     }
 

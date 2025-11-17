@@ -13,7 +13,6 @@ const StorageController = (()=>{
         localProjects.forEach((project,index) => {
             const name = project.name;
             const tasks = project.taskList;
-            console.log(tasks);
             if(index != 0)
                 ProjectController.addProject(name);
             const currentProject = ProjectController.getProjects()[index];
